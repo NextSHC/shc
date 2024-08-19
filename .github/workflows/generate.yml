@@ -15,10 +15,22 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
+
+      - name: Find branch that the tag was created from
+        if: ${{ startsWith(github.ref, 'ref/tags/v') || startsWith(github.ref, 'ref/tags/4') }}
+        id: get_branch
+        run: |
+          TAG_COMMIT=$(git rev-list -n 1 ${{ github.ref_name }})
+          BRANCH=$(git branch -r --contains $TAG_COMMIT | grep -v 'HEAD' | sed 's|origin/||' | sort -r | head -n 1)
+          echo "Branch found: $BRANCH"
+          echo "branch=$BRANCH" >> $GITHUB_ENV
+          git checkout $BRANCH
+
       - name: Set version number (when publishing)
-        if: ${{ startsWith(github.ref, 'ref/tags/v') }}
+        if: ${{ startsWith(github.ref, 'ref/tags/v') || startsWith(github.ref, 'ref/tags/4') }}
         run: |
           python3 ${{ github.workspace }}/.github/update_version.py --version ${{ github.ref_name }}
+
       - uses: dorny/paths-filter@v3
         id: changes
         with:

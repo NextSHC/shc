@@ -20,7 +20,7 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: Find branch that the tag was created from
-        if: ${{ startsWith(github.head_ref, 'ref/tags/v') || startsWith(github.head_ref, 'ref/tags/4') }}
+        if: ${{ startsWith(github.ref_name, 'v') || startsWith(github.ref_name, '4') }}
         id: get_branch
         run: |
           TAG_COMMIT=$(git rev-list -n 1 ${{ github.ref_name }})
@@ -30,7 +30,7 @@ jobs:
           git checkout $BRANCH
 
       - name: Set version number (when publishing)
-        if: ${{ startsWith(github.head_ref, 'ref/tags/v') || startsWith(github.head_ref, 'ref/tags/4') }}
+        if: ${{ startsWith(github.ref_name, 'v') || startsWith(github.ref_name, '4') }}
         run: |
           python3 ${{ github.workspace }}/.github/update_version.py --version ${{ github.ref_name }}
 

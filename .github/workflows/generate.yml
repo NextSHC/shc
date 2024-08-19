@@ -8,6 +8,9 @@ on:
   release:
     types: [published]
 
+env:
+  GITHUB_JSON: ${{ toJSON(github) }} # Helps in debugging Github Action
+
 jobs:
   convert_via_pandoc:
     runs-on: ubuntu-24.04

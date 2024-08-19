@@ -1246,6 +1246,7 @@ char*read_script(char *file)
 	l_text = tmp_realloc;
 	l_text[l] = '\0';
 
+#ifndef __CYGWIN__  // False positive on CYGWIN where this value is "high" and returns -1
 	/* Check current System ARG_MAX limit. */
 	if (!PIPESCRIPT_flag && (l > 0.80 * (cnt = sysconf(_SC_ARG_MAX)))) {
 		fprintf(stderr, "%s: WARNING!!\n"
@@ -1255,6 +1256,7 @@ char*read_script(char *file)
 			"   and your script \"%s\" is %d bytes length.\n",
 			my_name, cnt, file, l);
 	}
+#endif
 	return l_text;
 }
 

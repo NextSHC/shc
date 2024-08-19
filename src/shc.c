@@ -4,7 +4,7 @@
  * This software contains an ad hoc version of the 'Alleged RC4' algorithm,
  * which was anonymously posted on sci.crypt news by cypherpunks on Sep 1994.
  *
- * My implementation is a complete rewrite of the one found in
+ * The Alleged RC4 implementation is a complete rewrite of the one found in
  * an unknown-copyright (283 characters) version picked up from:
  *    From: allen@gateway.grumman.com (John L. Allen)
  *    Newsgroups: comp.lang.c
@@ -12,8 +12,10 @@
  *    Date: 21 May 1996 10:49:37 -0400
  * And it is licensed also under GPL.
  *
- * That's where I got it, now I am going to do some work on it
- * It will reside here: https://github.com/neurobin/shc
+ * That's where @neurobin got it, and lived at https://github.com/neurobin/shc .
+ *
+ * However, it originated at https://www.datsi.fi.upm.es/~frosal/sources/shc.html,
+ * THis version is hosted at https://github.com/NextSHC/shc/ (from neurobin)
  */
 
 static const char my_name[] = "shc";
@@ -21,13 +23,18 @@ static const char version[] = "Version 4.0.3";
 static const char subject[] = "Generic Shell Script Compiler";
 static const char cpright[] = "GNU GPL Version 3";
 static const struct {const char *f, *s, *e;}
-provider = { "Md Jahidul", "Hamid", "<jahidulhamid@yahoo.com>" };
+provider = { "John", "DOE", "<john.doe@example.com>" };
 
 /*
-   static const struct { const char * f, * s, * e; }
-    author = { "Francisco", "Garcia", "<frosal@fi.upm.es>" };
+ *  1994-2015:
+ *  This is the original author who first came up with this
+ *  author = { "Francisco", "Garcia", "<frosal@fi.upm.es>" };
+ *   Last release: shc-3.8.9b.tgz / 08-Sep-2015
+ *  2015-2024:
+ *  author = { "Md Jahidul", "Hamid", "<jahidulhamid@yahoo.com>" };
+ *  2024-    : et al.
+ *  Home @ https://github.com/NextSHC
  */
-/*This is the original author who first came up with this*/
 
 static const char *copying[] = {
 	"Copying:",
@@ -46,7 +53,7 @@ static const char *copying[] = {
 	"    along with this program; if not, write to the Free Software",
 	"    @Neurobin, Dhaka, Bangladesh",
 	"",
-	"    Report problems and questions to: https://github.com/neurobin/shc",
+	"    Report problems and questions to: https://github.com/NextSHC/shc",
 	"",
 	0
 };

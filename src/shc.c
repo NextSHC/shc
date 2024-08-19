@@ -841,7 +841,9 @@ static const char *RTC[] = {
 
 static int parse_an_arg(int argc, char *argv[])
 {
+#ifndef __CYGWIN__
 	extern char *optarg;
+#endif
 	const char *opts = "e:m:i:x:l:o:f:2ABCDhHpPrSUv";
 	struct tm tmp[1];
 	time_t expdate;

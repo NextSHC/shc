@@ -141,4 +141,4 @@ Md Jahidul Hamid <jahidulhamid@yahoo.com>
 Note: Do not contact them, they are no longer actively involved
 
 # REPORT BUGS TO
-https://github.com/neurobin/shc/issues 
+https://github.com/NextSHC/shc/issues 
